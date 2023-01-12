@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/PagerDuty/go-pagerduty"
+	"github.com/Ardiannn08/go-pagerduty"
 )
 
 var (

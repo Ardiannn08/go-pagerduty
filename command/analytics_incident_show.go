@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/PagerDuty/go-pagerduty"
+	"github.com/Ardiannn08/go-pagerduty"
 	"github.com/mitchellh/cli"
 	log "github.com/sirupsen/logrus"
 )
@@ -41,7 +41,7 @@ func (c *AnalyticsShow) Synopsis() string {
 	return "Get aggregated incident data analytics"
 }
 
-//Run executes analytics cli command and displays incident analytics for the requested data.
+// Run executes analytics cli command and displays incident analytics for the requested data.
 func (c *AnalyticsShow) Run(args []string) int {
 	flags := c.Meta.FlagSet("analytics incident show")
 	flags.Usage = func() { fmt.Println(c.Help()) }

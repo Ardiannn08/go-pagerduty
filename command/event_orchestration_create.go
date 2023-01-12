@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/PagerDuty/go-pagerduty"
+	"github.com/Ardiannn08/go-pagerduty"
 	"github.com/mitchellh/cli"
 	log "github.com/sirupsen/logrus"
 )
