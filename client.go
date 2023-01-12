@@ -84,7 +84,7 @@ type APIErrorObject struct {
 }
 
 // fallbackAPIErrorObject is a shim to solve this issue:
-// https://github.com/PagerDuty/go-pagerduty/issues/339
+// https://github.com/Ardiannn08/go-pagerduty/issues/339
 //
 // TODO: remove when PagerDuty engineering confirms bugfix to the REST API
 type fallbackAPIErrorObject struct {
@@ -121,7 +121,7 @@ func (n *NullAPIErrorObject) UnmarshalJSON(data []byte) error {
 		}
 
 		//
-		// see https://github.com/PagerDuty/go-pagerduty/issues/339
+		// see https://github.com/Ardiannn08/go-pagerduty/issues/339
 		//
 		var faeo fallbackAPIErrorObject
 

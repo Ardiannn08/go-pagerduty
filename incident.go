@@ -251,7 +251,7 @@ func (c *Client) CreateIncidentWithContext(ctx context.Context, from string, o *
 		"From": from,
 	}
 
-	// see: https://github.com/PagerDuty/go-pagerduty/issues/390
+	// see: https://github.com/Ardiannn08/go-pagerduty/issues/390
 	o.Type = "incident"
 
 	d := map[string]*CreateIncidentOptions{
@@ -282,7 +282,7 @@ func (c *Client) ManageIncidents(from string, incidents []ManageIncidentsOptions
 // ManageIncidentsWithContext acknowledges, resolves, escalates, or reassigns
 // one or more incidents.
 func (c *Client) ManageIncidentsWithContext(ctx context.Context, from string, incidents []ManageIncidentsOptions) (*ListIncidentsResponse, error) {
-	// see: https://github.com/PagerDuty/go-pagerduty/issues/390
+	// see: https://github.com/Ardiannn08/go-pagerduty/issues/390
 	for i := range incidents {
 		incidents[i].Type = "incident"
 	}
@@ -667,18 +667,18 @@ type ResponderRequestTargetWrapper struct {
 
 // ResponderRequestOptions defines the input options for the Create Responder function.
 type ResponderRequestOptions struct {
-	From        string                   `json:"-"`
-	Message     string                   `json:"message"`
-	RequesterID string                   `json:"requester_id"`
+	From        string                          `json:"-"`
+	Message     string                          `json:"message"`
+	RequesterID string                          `json:"requester_id"`
 	Targets     []ResponderRequestTargetWrapper `json:"responder_request_targets"`
 }
 
 // ResponderRequest contains the API structure for an incident responder request.
 type ResponderRequest struct {
-	Incident    Incident                 `json:"incident"`
-	Requester   User                     `json:"requester,omitempty"`
-	RequestedAt string                   `json:"request_at,omitempty"`
-	Message     string                   `json:"message,omitempty"`
+	Incident    Incident                        `json:"incident"`
+	Requester   User                            `json:"requester,omitempty"`
+	RequestedAt string                          `json:"request_at,omitempty"`
+	Message     string                          `json:"message,omitempty"`
 	Targets     []ResponderRequestTargetWrapper `json:"responder_request_targets"`
 }
 

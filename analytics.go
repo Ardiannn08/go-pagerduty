@@ -60,6 +60,57 @@ type AnalyticsData struct {
 	UserDefinedEffortSeconds       int     `json:"user_defined_effort_seconds,omitempty"`
 	RangeStart                     string  `json:"range_start,omitempty"`
 }
+type AnalyticsRawIncidentData struct {
+	ID                        string `json:"id,omitempty"`
+	TeamID                    string `json:"team_id,omitempty"`
+	TeamName                  string `json:"team_name,omitempty"`
+	ServiceID                 string `json:"service_id,omitempty"`
+	ServiceName               string `json:"service_name,omitempty"`
+	CreatedAt                 string `json:"created_at,omitempty"`
+	ResolvedAt                string `json:"resolved_at,omitempty"`
+	Description               string `json:"description,omitempty"`
+	IncidentNumber            uint   `json:"incident_number,omitempty"`
+	Urgency                   string `json:"urgency,omitempty"`
+	Major                     bool   `json:"major,omitempty"`
+	PriorityID                string `json:"priority_id,omitempty"`
+	PriorityName              string `json:"priority_name,omitempty"`
+	PriorityOrder             uint   `json:"priority_order,omitempty"`
+	SecondsToResolve          uint   `json:"seconds_to_resolve,omitempty"`
+	SecondsToFirstAck         uint   `json:"seconds_to_first_ack,omitempty"`
+	SecondsToEngage           uint   `json:"seconds_to_engage,omitempty"`
+	SecondsToMobilize         uint   `json:"seconds_to_mobilize,omitempty"`
+	EngagedSeconds            uint   `json:"engaged_seconds,omitempty"`
+	EngagedUserCount          uint   `json:"engaged_user_count,omitempty"`
+	EscalationCount           uint   `json:"escalation_count,omitempty"`
+	AssignmentCount           uint   `json:"assignment_count,omitempty"`
+	BusinessHourInterruptions uint   `json:"business_hour_interruptions,omitempty"`
+	SleepHourInterruptions    uint   `json:"sleep_hour_interruptions,omitempty"`
+	OffHourInterruptions      uint   `json:"off_hour_interruptions,omitempty"`
+	SnoozedSeconds            uint   `json:"snoozed_seconds,omitempty"`
+	UserDefinedEffortsSeconds uint   `json:"user_defined_effort_seconds,omitempty"`
+}
+
+type AnalyticsIncidentResponse struct {
+	First    string                     `json:"first,omitempty"`
+	Last     string                     `json:"last,omitempty"`
+	Limit    uint                       `json:"limit,omitempty"`
+	More     bool                       `url:"more,omitempty"`
+	Order    string                     `json:"order,omitempty"`
+	OrderBy  string                     `json:"order_by,omitempty"`
+	Filter   *AnalyticsFilter           `json:"filters,omitempty"`
+	TimeZone string                     `json:"time_zone,omitempty"`
+	Data     []AnalyticsRawIncidentData `json:"data,omitempty"`
+}
+
+type AnalyticsRawIncidentsRequest struct {
+	Filter        *AnalyticsFilter `json:"filters,omitempty"`
+	StartingAfter string           `json:"starting_after,omitempty"`
+	EndingBefore  string           `json:"ending_before,omitempty"`
+	Order         string           `json:"order,omitempty"`
+	OrderBy       string           `json:"order_by,omitempty"`
+	Limit         uint             `json:"limit,omitempty"`
+	TimeZone      string           `json:"time_zone,omitempty"`
+}
 
 // GetAggregatedIncidentData gets the aggregated incident analytics for the requested data.
 func (c *Client) GetAggregatedIncidentData(ctx context.Context, analytics AnalyticsRequest) (AnalyticsResponse, error) {
@@ -93,4 +144,22 @@ func (c *Client) getAggregatedData(ctx context.Context, analytics AnalyticsReque
 	}
 
 	return analyticsResponse, nil
+}
+
+func (c *Client) GetRawIncidentsAnalytics(ctx context.Context, r AnalyticsRawIncidentsRequest) (AnalyticsIncidentResponse, error) {
+	h := map[string]string{
+		"X-EARLY-ACCESS": "analytics-v2",
+	}
+
+	resp, err := c.post(ctx, "/analytics/raw/incidents", r, h)
+	if err != nil {
+		return AnalyticsIncidentResponse{}, err
+	}
+
+	var target AnalyticsIncidentResponse
+	if err := c.decodeJSON(resp, &target); err != nil {
+		return AnalyticsIncidentResponse{}, fmt.Errorf("Could not decode JSON response: %v", err)
+	}
+
+	return target, nil
 }

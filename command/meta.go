@@ -8,8 +8,8 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/Ardiannn08/go-pagerduty"
 	"github.com/mitchellh/go-homedir"
-	"github.com/PagerDuty/go-pagerduty"
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/yaml.v2"
 )

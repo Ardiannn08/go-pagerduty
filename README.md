@@ -1,4 +1,4 @@
-[![GoDoc](https://godoc.org/github.com/PagerDuty/go-pagerduty?status.svg)](http://godoc.org/github.com/PagerDuty/go-pagerduty) [![Go Report Card](https://goreportcard.com/badge/github.com/PagerDuty/go-pagerduty)](https://goreportcard.com/report/github.com/PagerDuty/go-pagerduty) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/gojp/goreportcard/blob/master/LICENSE)
+[![GoDoc](https://godoc.org/github.com/Ardiannn08/go-pagerduty?status.svg)](http://godoc.org/github.com/Ardiannn08/go-pagerduty) [![Go Report Card](https://goreportcard.com/badge/github.com/Ardiannn08/go-pagerduty)](https://goreportcard.com/report/github.com/Ardiannn08/go-pagerduty) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/gojp/goreportcard/blob/master/LICENSE)
 # go-pagerduty
 
 go-pagerduty is a CLI and [go](https://golang.org/) client library for the [PagerDuty API](https://developer.pagerduty.com/api-reference/).
@@ -7,12 +7,12 @@ go-pagerduty is a CLI and [go](https://golang.org/) client library for the [Page
 
 To add the latest stable version to your project:
 ```cli
-go get github.com/PagerDuty/go-pagerduty@v1.6
+go get github.com/Ardiannn08/go-pagerduty@v1.6
 ```
 
 If you instead wish to work with the latest code from main:
 ```cli
-go get github.com/PagerDuty/go-pagerduty@latest
+go get github.com/Ardiannn08/go-pagerduty@latest
 ```
 
 ## Usage
@@ -47,9 +47,9 @@ pd service list
 
 As part of the `v1.5.0` release, we have fixed features that have never worked
 correctly and require a breaking API change to fix. One example is the issue
-reported in [\#232](https://github.com/PagerDuty/go-pagerduty/issues/232), as
+reported in [\#232](https://github.com/Ardiannn08/go-pagerduty/issues/232), as
 well as a handful of other examples within the [v1.5.0
-milestone](https://github.com/PagerDuty/go-pagerduty/milestone/2).
+milestone](https://github.com/Ardiannn08/go-pagerduty/milestone/2).
 
 If you are impacted by a breaking change in this release, you should audit the
 functionality you depended on as it may not have been working. If you cannot
@@ -64,7 +64,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/PagerDuty/go-pagerduty"
+	"github.com/Ardiannn08/go-pagerduty"
 )
 
 var	authtoken = "" // Set your auth token here
@@ -99,7 +99,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/PagerDuty/go-pagerduty"
+	"github.com/Ardiannn08/go-pagerduty"
 )
 
 var	authtoken = "" // Set your auth token here
@@ -184,7 +184,7 @@ helpers.
 
 ## Contributing
 
-1. Fork it ( https://github.com/PagerDuty/go-pagerduty/fork )
+1. Fork it ( https://github.com/Ardiannn08/go-pagerduty/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

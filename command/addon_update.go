@@ -3,9 +3,9 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/PagerDuty/go-pagerduty"
-	log "github.com/sirupsen/logrus"
+	"github.com/Ardiannn08/go-pagerduty"
 	"github.com/mitchellh/cli"
+	log "github.com/sirupsen/logrus"
 	"strings"
 )
 
